@@ -1,0 +1,46 @@
+[
+  {
+    "codec": "avc1.42001e",
+    "codedHeight": 180,
+    "codedWidth": 320,
+    "colorSpace": {
+      "fullRange": false,
+      "matrix": "bt709",
+      "primaries": "bt709",
+      "transfer": "iec61966-2-1"
+    },
+    "description": {},
+    "hardwareAcceleration": "no-preference"
+  },
+  {
+    "decoderConfig": {
+      "codec": "avc1.42001e",
+      "codedHeight": 180,
+      "codedWidth": 320,
+      "colorSpace": {
+        "fullRange": false,
+        "matrix": "bt709",
+        "primaries": "bt709",
+        "transfer": "iec61966-2-1"
+      },
+      "description": {},
+      "hardwareAcceleration": "no-preference",
+      "descriptionInBase64": "AUIDDf/hABJnQsANjI1AoMvPNQENAQeEQjUBAARozjyA"
+    }
+  },
+  {
+    "codec": "opus",
+    "description": {},
+    "numberOfChannels": 1,
+    "sampleRate": 48000
+  },
+  {
+    "decoderConfig": {
+      "codec": "opus",
+      "description": {},
+      "numberOfChannels": 1,
+      "sampleRate": 48000,
+      "descriptionInBase64": "T3B1c0hlYWQBATgBgLsAAAAAAA=="
+    }
+  }
+]
