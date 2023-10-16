@@ -161,9 +161,7 @@ LICENSE file in the root directory of this source tree.
 var resolutionDropdown = document.getElementById("resolutionDropdown");
     var widthInput = document.getElementById("videoEncodingWidth");
     var heightInput = document.getElementById("videoEncodingHeight");
-    var frameRateDropdown = document.getElementById("frameRateDropdown");
-    var frameRateInput = document.getElementById("videoEncodingFrameRate");
-    var videoEncodingBitrateBpsInput = document.getElementById("videoEncodingBitrateBps")
+
     resolutionDropdown.addEventListener("change", function () {
         var selectedResolution = resolutionDropdown.value.split("x");
         var width = selectedResolution[0];
@@ -173,6 +171,10 @@ var resolutionDropdown = document.getElementById("resolutionDropdown");
         heightInput.value = height;
         videoEncodingBitrateBpsInput.value = widthInput.value * heightInput.value * frameRateInput.value
     });
+
+    var frameRateDropdown = document.getElementById("frameRateDropdown");
+    var frameRateInput = document.getElementById("videoEncodingFrameRate");
+    var videoEncodingBitrateBpsInput = document.getElementById("videoEncodingBitrateBps")
 
     frameRateDropdown.addEventListener("change", function () {
         var selectedFrameRate = frameRateDropdown.value;
@@ -192,9 +194,9 @@ var resolutionDropdown = document.getElementById("resolutionDropdown");
     // Video encoder config
     const videoEncoderConfig = {
         encoderConfig: {
-            codec: 'avc1.42001e', // Baseline = 66, level 30 (see: https://en.wikipedia.org/wiki/Advanced_Video_Coding)
+            // codec: 'avc1.42001e', // Baseline = 66, level 30 (see: https://en.wikipedia.org/wiki/Advanced_Video_Coding)
             // codec: 'avc1.420028', // Baseline = 66, level 30 (see: https://en.wikipedia.org/wiki/Advanced_Video_Coding)
-            // 'vp09.00.10.08'
+            codec: 'vp09.00.10.08',
             width: 848,
             height: 480,
             bitrate: 1_000_000, // 1 Mbps
