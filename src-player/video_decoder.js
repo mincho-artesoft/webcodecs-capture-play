@@ -116,7 +116,6 @@ self.addEventListener('message', async function (e) {
         sendMessageToMain(WORKER_PREFIX, "info", "Initialized and configured");
     }
     else if (type == "videochunk") {
-        sendMessageToMain(WORKER_PREFIX, "warning", type);
         if (workerState !== StateEnum.Running) {
             sendMessageToMain(WORKER_PREFIX, "warning", "Received video chunk, but NOT running state");
             return;
