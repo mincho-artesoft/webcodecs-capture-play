@@ -83,7 +83,7 @@ LICENSE file in the root directory of this source tree.
                 </label>
                 <label>KeyFrame every (frames):<input id="videoEncodingKeyFrameEvery" type="text" value="60"
                         size="5"></label>
-                <label>Bitrate (bps): <input id="videoEncodingBitrateBps" type="text" value="500000" size="8"></label>
+                <label>Bitrate (bps): <input id="videoEncodingBitrateBps" type="text" value="8303616" size="8"></label>
                 <div class="clear"></div>
                 <h3>Audio encoding params (opus)</h3>
                 <label>Bitrate (bps): <input id="audioEncodingBitrateBps" type="text" value="32000" size="8"></label>
@@ -158,24 +158,68 @@ LICENSE file in the root directory of this source tree.
 <script src="../utils/time_checker.js"></script>
 <script>
 
-var resolutionDropdown = document.getElementById("resolutionDropdown");
-    var widthInput = document.getElementById("videoEncodingWidth");
-    var heightInput = document.getElementById("videoEncodingHeight");
+
+function calculateBitrate() {
+    let resolutionDropdown = document.getElementById("resolutionDropdown");
+    let frameRateDropdown = document.getElementById("frameRateDropdown");
+    let videoEncodingBitrateBps = document.getElementById("videoEncodingBitrateBps");
+
+    let selectedResolution = resolutionDropdown.value;
+    let selectedFrameRate = frameRateDropdown.value;
+
+    let bitrate = 0;
+
+    // Тук трябва да добавите логика за изчисляване на битрейта за всяка резолюция и кадрова честота
+    if (selectedResolution === "848x480" && selectedFrameRate === "24") {
+        bitrate = 2000000;
+    } else if (selectedResolution === "848x480" && selectedFrameRate === "30") {
+        bitrate = 2500000;
+    } else if (selectedResolution === "848x480" && selectedFrameRate === "60") {
+        bitrate = 5000000;
+    } else if (selectedResolution === "1280x720" && selectedFrameRate === "24") {
+        bitrate = 4000000;
+    } else if (selectedResolution === "1280x720" && selectedFrameRate === "30") {
+        bitrate = 5000000;
+    } else if (selectedResolution === "1280x720" && selectedFrameRate === "60") {
+        bitrate = 10000000;
+    } else if (selectedResolution === "1920x1080" && selectedFrameRate === "24") {
+        bitrate = 8000000;
+    } else if (selectedResolution === "1920x1080" && selectedFrameRate === "30") {
+        bitrate = 10000000;
+    } else if (selectedResolution === "1920x1080" && selectedFrameRate === "60") {
+        bitrate = 20000000;
+    }
+
+    videoEncodingBitrateBps.value = bitrate;
+}
+
+// Добавете събития "change" към елементите за резолюция и кадрова честота
+let resolutionDropdown = document.getElementById("resolutionDropdown");
+let frameRateDropdown = document.getElementById("frameRateDropdown");
+
+resolutionDropdown.addEventListener("change", calculateBitrate);
+frameRateDropdown.addEventListener("change", calculateBitrate);
+
+// Извикване на функцията при зареждане на страницата
+calculateBitrate();
+
+
+let widthInput = document.getElementById("videoEncodingWidth");
+let heightInput = document.getElementById("videoEncodingHeight");
 
     resolutionDropdown.addEventListener("change", function () {
-        var selectedResolution = resolutionDropdown.value.split("x");
-        var width = selectedResolution[0];
-        var height = selectedResolution[1];
+        let selectedResolution = resolutionDropdown.value.split("x");
+        let width = selectedResolution[0];
+        let height = selectedResolution[1];
 
         widthInput.value = width;
         heightInput.value = height;
     });
 
-    var frameRateDropdown = document.getElementById("frameRateDropdown");
     var frameRateInput = document.getElementById("videoEncodingFrameRate");
 
     frameRateDropdown.addEventListener("change", function () {
-        var selectedFrameRate = frameRateDropdown.value;
+        let selectedFrameRate = frameRateDropdown.value;
 
         frameRateInput.value = selectedFrameRate;
     });
